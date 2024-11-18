@@ -24,7 +24,16 @@ export const resolvers = {
 
   Subscription: {
     messageAdded: {
-      subscribe: () => pubSub.asyncIterableIterator('MESSAGE_ADDED')
+      // Without authentication and created context here for testing authentication context for WebSocket server
+      // subscribe: (_root, _args, context) => {
+      //   console.log('[messageAdded] Context: ', context)
+      //   return pubSub.asyncIterableIterator('MESSAGE_ADDED')
+      // }
+      subscribe: (_root, _args, { user }) => { //extracting user from context
+        // console.log('[messageAdded] Context: ', user)
+        if (!user) throw unauthorizedError();
+        return pubSub.asyncIterableIterator('MESSAGE_ADDED')
+      }
     }
   }
 };

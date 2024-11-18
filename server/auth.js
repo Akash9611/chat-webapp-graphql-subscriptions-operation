@@ -10,6 +10,11 @@ export const authMiddleware = expressjwt({
   secret,
 });
 
+// For Authentication WebSocket Server API calls by subscription
+export function decodeToken(token) {
+  return jwt.verify(token, secret);
+}
+
 export async function handleLogin(req, res) {
   const { username, password } = req.body;
   const user = await getUser(username);
@@ -18,6 +23,6 @@ export async function handleLogin(req, res) {
   } else {
     const claims = { sub: username };
     const token = jwt.sign(claims, secret);
-    res.json({ token });  
+    res.json({ token });
   }
 }
