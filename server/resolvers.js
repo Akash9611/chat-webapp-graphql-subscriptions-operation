@@ -2,7 +2,8 @@ import { GraphQLError } from 'graphql';
 import { createMessage, getMessages } from './controllers/messages.js';
 import { PubSub } from 'graphql-subscriptions';
 
-const pubSub = new PubSub();
+const pubSub = new PubSub(); // This package is not suitable for production environment. links—> 1.pubSub Class[https://www.apollographql.com/docs/apollo-server/data/subscriptions#the-pubsub-class], 2.pubsub production library doc[https://www.apollographql.com/docs/apollo-server/data/subscriptions#production-pubsub-libraries]
+
 
 export const resolvers = {
   Query: {
