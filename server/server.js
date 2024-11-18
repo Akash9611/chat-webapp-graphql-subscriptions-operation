@@ -29,7 +29,7 @@ function getHttpContext({ req }) {
 // For Authenticating WebSocket Server API calls by subscription by creating new context for authorization
 function getWsContext({ connectionParams }) {
   // console.log('[ConnectionParams] Context: ', connectionParams);
-  const accessToken = connectionParams.accessToken;
+  const accessToken = connectionParams?.accessToken;
   if (accessToken) {
     const payload = decodeToken(accessToken)
     // console.log(payload.sub)
