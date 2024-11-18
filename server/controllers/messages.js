@@ -1,5 +1,5 @@
-import { connection } from './connection.js';
-import { generateId } from './ids.js';
+import { connection } from '../db/connection.js';
+import { generateId } from '../db/ids.js';
 
 const getMessageTable = () => connection.table('message');
 

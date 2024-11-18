@@ -1,4 +1,4 @@
-import { connection } from './connection.js';
+import { connection } from '../db/connection.js';
 
 const getUserTable = () => connection.table('user');
 

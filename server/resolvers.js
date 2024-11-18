@@ -1,5 +1,5 @@
 import { GraphQLError } from 'graphql';
-import { createMessage, getMessages } from './db/messages.js';
+import { createMessage, getMessages } from './controllers/messages.js';
 
 export const resolvers = {
   Query: {

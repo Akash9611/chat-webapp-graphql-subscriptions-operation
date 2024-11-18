@@ -17,25 +17,25 @@ await connection.schema.createTable('message', (table) => {
 
 await connection.table('message').insert([
   {
-    id: 'm00000000001',
+    id: 'abcde0000122',
     user: 'system',
-    text: 'Welcome to the GraphQL chat!',
-    createdAt: '2023-01-31T11:00:00.000Z',
+    text: 'Welcome to the GraphQL Leaning chat!',
+    createdAt: '2024-11-18T12:10:20.000Z',
   },
 ]);
 
 await connection.table('user').insert([
   {
-    username: 'alice',
-    password: 'alice123',
+    username: 'akash',
+    password: 'akash123',
   },
   {
-    username: 'bob',
-    password: 'bob123',
+    username: 'ram',
+    password: 'ram123',
   },
   {
-    username: 'charlie',
-    password: 'charlie123',
+    username: 'krishna',
+    password: 'krishna123',
   },
 ]);
 
