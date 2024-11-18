@@ -16,17 +16,20 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-const httpLink = concat(createHttpLink({ uri: 'http://localhost:9000/graphql' }), authLink);
+const httpLink = concat(authLink, createHttpLink({
+  uri: 'http://localhost:9000/graphql'
+}));
 
 const wsLink = new GraphQLWsLink(createWsClient({
-  url: 'ws://localhost:9000/graphql'
-}))
+  url: 'ws://localhost:9000/graphql',
+}));
+
 export const apolloClient = new ApolloClient({
   link: split(isSubscription, wsLink, httpLink),
   cache: new InMemoryCache(),
 });
 
 function isSubscription(operation) {
-  const definition = getMainDefinition(operation.query)
+  const definition = getMainDefinition(operation.query);
   return definition.kind === Kind.OPERATION_DEFINITION && definition.operation === OperationTypeNode.SUBSCRIPTION;
 }
